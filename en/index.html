@@ -1,695 +1,508 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f4f4f1">
-  <title>CoBatik — Virtual Batik Try-On for Android</title>
-  <meta name="description" content="CoBatik presents Batik VTON, a free Android app for virtual batik try-on. Explore a curated Indonesian batik archive and preview a batik look on your portrait.">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <link rel="canonical" href="https://cobatik.dream-team.works/en/">
-  <link rel="alternate" hreflang="id" href="https://cobatik.dream-team.works/">
-  <link rel="alternate" hreflang="en" href="https://cobatik.dream-team.works/en/">
-  <link rel="alternate" hreflang="x-default" href="https://cobatik.dream-team.works/">
-  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="CoBatik">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:locale:alternate" content="id_ID">
-  <meta property="og:url" content="https://cobatik.dream-team.works/en/">
-  <meta property="og:title" content="CoBatik — Virtual Batik Try-On for Android">
-  <meta property="og:description" content="CoBatik presents Batik VTON, a free Android app for virtual batik try-on. Explore a curated Indonesian batik archive and preview a batik look on your portrait.">
-  <meta property="og:image" content="https://cobatik.dream-team.works/assets/og-cover.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="CoBatik — virtual batik try-on for Android">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="CoBatik — Virtual Batik Try-On for Android">
-  <meta name="twitter:description" content="CoBatik presents Batik VTON, a free Android app for virtual batik try-on. Explore a curated Indonesian batik archive and preview a batik look on your portrait.">
-  <meta name="twitter:image" content="https://cobatik.dream-team.works/assets/og-cover.png">
-  <meta name="twitter:image:alt" content="CoBatik — virtual batik try-on for Android">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://cobatik.dream-team.works/#website",
-        "url": "https://cobatik.dream-team.works/",
-        "name": "CoBatik",
-        "description": "CoBatik presents Batik VTON, an Android app for virtual batik try-on.",
-        "inLanguage": "en"
-      },
-      {
-        "@type": "MobileApplication",
-        "@id": "https://cobatik.dream-team.works/#app",
-        "name": "Batik VTON",
-        "alternateName": "CoBatik",
-        "description": "Free Android app for virtual batik try-on: explore a curated Indonesian batik archive, take a portrait and preview your look.",
-        "operatingSystem": "Android 7.0+",
-        "applicationCategory": "ShoppingApplication",
-        "inLanguage": ["id", "en"],
-        "downloadUrl": "https://github.com/DaniZakaria63/batik-vton-mobile/releases",
-        "installUrl": "https://github.com/DaniZakaria63/batik-vton-mobile/releases",
-        "sameAs": ["https://github.com/DaniZakaria63/batik-vton-mobile"],
-        "screenshot": "https://cobatik.dream-team.works/assets/app-preview.png",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "IDR" }
-      }
-    ]
-  }
-  </script>
-  <style>
-    :root {
-      color-scheme: light;
-      --paper: #f4f4f1;
-      --surface: #ffffff;
-      --soft: #ecece8;
-      --ink: #20201e;
-      --muted: #555550;
-      --line: #d4d3cd;
-      --brown: #684323;
-      --brown-dark: #4c2d16;
-      --gold: #8a713e;
-      --night: #211f1c;
-      --night-muted: #d0cec8;
-      --content: 1200px;
-      --gutter: clamp(20px, 4vw, 48px);
-      --space-section: clamp(56px, 8vw, 96px);
-      --ease: 180ms ease-out;
-      --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-      --device-frame-mid: #1d1d20;
-      --device-screen: #f7f7f8;
-      --device-system: #111214;
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f4f4f1">
+<title>CoBatik — Wear the Archive · Batik VTON Try-On for Android</title>
+<meta name="description" content="Wear the archive. Batik VTON by CoBatik is a free Android app for virtual batik try-on: curated Indonesian cloth from Cirebon, Yogyakarta, Pekalongan and Lasem, rendered on your portrait.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://cobatik.dream-team.works/en/">
+<link rel="alternate" hreflang="id" href="https://cobatik.dream-team.works/">
+<link rel="alternate" hreflang="en" href="https://cobatik.dream-team.works/en/">
+<link rel="alternate" hreflang="x-default" href="https://cobatik.dream-team.works/">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CoBatik">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="id_ID">
+<meta property="og:url" content="https://cobatik.dream-team.works/en/">
+<meta property="og:title" content="CoBatik — Wear the Archive · Batik VTON Try-On for Android">
+<meta property="og:description" content="Wear the archive. Batik VTON by CoBatik is a free Android app for virtual batik try-on: curated Indonesian cloth from Cirebon, Yogyakarta, Pekalongan and Lasem, rendered on your portrait.">
+<meta property="og:image" content="https://cobatik.dream-team.works/assets/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="CoBatik — Wear the archive: indigo Mega Mendung batik cloth beside the CoBatik wordmark.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CoBatik — Wear the Archive · Batik VTON Try-On for Android">
+<meta name="twitter:description" content="Wear the archive. Batik VTON by CoBatik is a free Android app for virtual batik try-on: curated Indonesian cloth from Cirebon, Yogyakarta, Pekalongan and Lasem, rendered on your portrait.">
+<meta name="twitter:image" content="https://cobatik.dream-team.works/assets/og-cover.jpg">
+<meta name="twitter:image:alt" content="CoBatik — Wear the archive: indigo Mega Mendung batik cloth beside the CoBatik wordmark.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://cobatik.dream-team.works/#website",
+      "url": "https://cobatik.dream-team.works/",
+      "name": "CoBatik",
+      "description": "CoBatik presents Batik VTON: wear the Indonesian batik archive — browse hand-drawn cloth and try batik on virtually on Android.",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "MobileApplication",
+      "@id": "https://cobatik.dream-team.works/#app",
+      "name": "Batik VTON",
+      "alternateName": "CoBatik",
+      "description": "A free Android app for virtual batik try-on: browse a curated Indonesian batik archive, take a portrait, and see the motif rendered on you.",
+      "operatingSystem": "Android 7.0+",
+      "applicationCategory": "ShoppingApplication",
+      "inLanguage": ["id", "en"],
+      "downloadUrl": "https://github.com/DaniZakaria63/batik-vton-mobile/releases",
+      "installUrl": "https://github.com/DaniZakaria63/batik-vton-mobile/releases",
+      "sameAs": ["https://github.com/DaniZakaria63/batik-vton-mobile"],
+      "screenshot": "https://cobatik.dream-team.works/assets/images/app-screen.png",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "IDR" }
     }
-
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      background: var(--paper);
-      font: 16px/1.65 var(--sans);
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-    img { display: block; max-width: 100%; height: auto; }
-    a { color: inherit; }
-    button { color: inherit; font: inherit; }
-    a:focus-visible, button:focus-visible {
-      outline: 3px solid var(--gold);
-      outline-offset: 4px;
-    }
-    ::selection { color: #fff; background: var(--brown); }
-    .wrap { width: min(100% - (var(--gutter) * 2), var(--content)); margin-inline: auto; }
-    .display { font-family: var(--display); font-weight: 500; letter-spacing: -.045em; }
-    .eyebrow {
-      margin: 0;
-      color: var(--brown);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .14em;
-      line-height: 1.5;
-      text-transform: uppercase;
-    }
-    .skip-link {
-      position: fixed;
-      z-index: 100;
-      top: 8px;
-      left: 8px;
-      padding: 12px 16px;
-      transform: translateY(-150%);
-      color: #fff;
-      background: var(--ink);
-    }
-    .skip-link:focus { transform: translateY(0); }
-
-    .site-header {
-      position: sticky;
-      z-index: 20;
-      top: 0;
-      border-bottom: 1px solid var(--line);
-      background: var(--paper);
-    }
-    .header-inner {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 28px;
-    }
-    .brand {
-      display: inline-flex;
-      align-items: baseline;
-      gap: 10px;
-      color: var(--ink);
-      text-decoration: none;
-      white-space: nowrap;
-    }
-    .brand-name { font-size: 23px; font-weight: 720; letter-spacing: -.075em; }
-    .brand-note { color: var(--muted); font-size: 11px; letter-spacing: .045em; }
-    .header-right { display: flex; align-items: center; gap: clamp(18px, 2.5vw, 34px); }
-    .header-actions { display: flex; align-items: center; gap: 16px; }
-    .lang-switch {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 13px;
-      font-weight: 650;
-      letter-spacing: .02em;
-    }
-    .lang-switch a { color: var(--muted); text-decoration: none; transition: color var(--ease); }
-    .lang-switch a:hover { color: var(--brown-dark); }
-    .lang-switch a[aria-current="page"] { color: var(--ink); }
-    .lang-switch .lang-sep { color: var(--line); }
-    .site-nav { display: flex; align-items: center; gap: clamp(18px, 2.5vw, 34px); }
-    .site-nav a {
-      color: var(--muted);
-      font-size: 14px;
-      text-decoration: none;
-      transition: color var(--ease);
-    }
-    .site-nav a:hover { color: var(--brown-dark); }
-    .site-nav a.nav-download { color: var(--brown); font-weight: 700; }
-    .menu-toggle {
-      display: none;
-      width: 44px;
-      height: 44px;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--line);
-      background: transparent;
-      cursor: pointer;
-    }
-    .menu-glyph { display: grid; gap: 5px; }
-    .menu-glyph span { display: block; width: 20px; height: 2px; background: currentColor; }
-
-    .hero { padding-block: clamp(48px, 7vw, 88px) var(--space-section); }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(260px, .72fr);
-      align-items: center;
-      gap: clamp(48px, 8vw, 112px);
-    }
-    .hero-copy { max-width: 650px; }
-    .hero h1 {
-      max-width: 13ch;
-      margin: 18px 0 22px;
-      font-size: clamp(44px, 6.4vw, 78px);
-      line-height: 1.01;
-    }
-    .hero-lead {
-      max-width: 58ch;
-      margin: 0;
-      color: var(--muted);
-      font-size: clamp(17px, 1.5vw, 19px);
-      line-height: 1.65;
-    }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .button {
-      min-height: 48px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 20px;
-      border: 1px solid var(--brown);
-      border-radius: 2px;
-      color: #fff;
-      background: var(--brown);
-      font-size: 14px;
-      font-weight: 680;
-      line-height: 1.3;
-      text-align: center;
-      text-decoration: none;
-      transition: color var(--ease), background var(--ease), border-color var(--ease);
-    }
-    .button:hover { border-color: var(--brown-dark); background: var(--brown-dark); }
-    .button-secondary { color: var(--ink); background: transparent; border-color: #8e8b83; }
-    .button-secondary:hover { color: #fff; border-color: var(--ink); background: var(--ink); }
-    .app-facts {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 20px;
-      margin: 24px 0 0;
-      padding: 16px 0 0;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 13px;
-      list-style: none;
-    }
-    .app-facts li { white-space: nowrap; }
-    .app-figure { width: min(100%, 344px); justify-self: center; margin: 0; }
-    .preview-device {
-      position: relative;
-      isolation: isolate;
-      width: min(100%, 344px);
-      aspect-ratio: 344 / 738;
-      margin-inline: auto;
-      border-radius: clamp(38px, 13.5vw, 50px);
-      background:
-        linear-gradient(145deg, rgba(255,255,255,.18), transparent 17%),
-        linear-gradient(160deg, #3a3a3d 0%, var(--device-frame-mid) 47%, #09090b 100%);
-      box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,.13),
-        inset 0 0 0 2px rgba(0,0,0,.9),
-        0 24px 48px -18px rgba(0,0,0,.42),
-        0 8px 20px -10px rgba(0,0,0,.28);
-    }
-    .preview-device::before,
-    .preview-device::after {
-      content: "";
-      position: absolute;
-      z-index: 2;
-      top: 12%;
-      bottom: 12%;
-      width: 3px;
-      border-radius: 3px;
-      background: linear-gradient(to bottom, transparent, rgba(255,255,255,.13) 12%, transparent 22%, transparent 78%, rgba(255,255,255,.08) 90%, transparent);
-      pointer-events: none;
-    }
-    .preview-device::before { left: -1px; }
-    .preview-device::after { right: -1px; }
-    .preview-hardware-button {
-      position: absolute;
-      z-index: 3;
-      width: 4px;
-      border-radius: 3px;
-      background: linear-gradient(90deg, #050506, #242428 58%, #08080a);
-      box-shadow: inset 0 1px rgba(255,255,255,.08);
-    }
-    .preview-hardware-button.silent { left: -3px; top: 20%; height: 4%; }
-    .preview-hardware-button.volume-up { left: -3px; top: 26%; height: 7.1%; }
-    .preview-hardware-button.volume-down { left: -3px; top: 34%; height: 7.1%; }
-    .preview-hardware-button.power { right: -3px; top: 29%; height: 12%; }
-    .preview-device-screen {
-      position: absolute;
-      inset: 1.626% 3.488%;
-      overflow: hidden;
-      border-radius: clamp(30px, 11vw, 40px);
-      background: var(--device-screen);
-    }
-    .preview-device-screen img { display: block; width: 100%; max-width: none; height: auto; }
-    .preview-status-bar {
-      position: absolute;
-      z-index: 4;
-      top: 0;
-      left: 7%;
-      right: 7%;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      padding-top: 2.5%;
-      color: var(--device-system);
-      font-size: 12px;
-      font-weight: 650;
-      line-height: 1;
-      pointer-events: none;
-    }
-    .preview-status-icons { display: inline-flex; align-items: center; gap: 4px; }
-    .preview-status-icons svg { display: block; width: 14px; height: 10px; fill: currentColor; }
-    .preview-status-icons .battery { width: 20px; }
-    .preview-dynamic-island {
-      position: absolute;
-      z-index: 5;
-      top: 1.2%;
-      left: 50%;
-      width: 32%;
-      height: 4.2%;
-      transform: translateX(-50%);
-      border-radius: 999px;
-      background: #000;
-      box-shadow: inset 0 -1px 1px rgba(255,255,255,.05);
-      pointer-events: none;
-    }
-    .preview-home-indicator {
-      position: absolute;
-      z-index: 5;
-      left: 50%;
-      bottom: 1.1%;
-      width: 34%;
-      height: 5px;
-      transform: translateX(-50%);
-      border-radius: 999px;
-      background: var(--device-system);
-      opacity: .9;
-      pointer-events: none;
-    }
-    .app-figure figcaption { margin-top: 12px; color: var(--muted); font-size: 12px; letter-spacing: .025em; }
-
-    .section { padding-block: var(--space-section); border-top: 1px solid var(--line); }
-    .section-surface { background: var(--surface); }
-    .section-soft { background: var(--soft); }
-    .section-heading { max-width: 720px; margin-bottom: 36px; }
-    .section-heading h2 {
-      margin: 12px 0 0;
-      font-size: clamp(32px, 4.5vw, 52px);
-      line-height: 1.08;
-    }
-    .section-heading > p:last-child { max-width: 64ch; margin: 16px 0 0; color: var(--muted); }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 24px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-    .step { min-width: 0; padding-top: 18px; border-top: 1px solid var(--gold); }
-    .step-number { display: block; color: var(--brown); font: 500 18px/1 var(--display); }
-    .step h3 { margin: 18px 0 8px; font-size: 18px; line-height: 1.3; }
-    .step p { margin: 0; color: var(--muted); font-size: 15px; }
-
-    .archive-layout {
-      display: grid;
-      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
-      gap: clamp(36px, 7vw, 96px);
-      align-items: start;
-    }
-    .archive-layout .section-heading { margin: 0; }
-    .archive-details { display: grid; gap: 26px; }
-    .detail-row {
-      display: grid;
-      grid-template-columns: minmax(120px, .55fr) minmax(0, 1fr);
-      gap: 20px;
-      padding-top: 16px;
-      border-top: 1px solid var(--line);
-    }
-    .detail-row h3 { margin: 0; font-size: 15px; }
-    .detail-row p { margin: 0; color: var(--muted); }
-    .motif-list { margin-top: 24px; color: var(--brown-dark); font-size: 14px; font-weight: 650; }
-
-    .process-band {
-      display: grid;
-      grid-template-columns: minmax(180px, .55fr) minmax(0, 1.45fr);
-      gap: clamp(24px, 6vw, 80px);
-      align-items: start;
-      padding-block: 32px;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-    .process-band h2 { margin: 0; font-size: clamp(24px, 3vw, 34px); line-height: 1.15; }
-    .process-band p { max-width: 66ch; margin: 0; color: var(--muted); }
-    .process-band strong { color: var(--ink); }
-
-    .merchant-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(220px, .62fr);
-      gap: clamp(40px, 8vw, 110px);
-      align-items: center;
-    }
-    .merchant-layout .section-heading { margin: 0; }
-    .merchant-note {
-      padding: 20px 0 20px 24px;
-      border-left: 2px solid var(--gold);
-    }
-    .merchant-note p { margin: 0; color: var(--muted); }
-    .merchant-note a { display: inline-block; margin-top: 18px; color: var(--brown); font-weight: 700; text-underline-offset: 4px; }
-
-    .privacy-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0 36px;
-      margin: 0;
-    }
-    .privacy-item { padding: 20px 0; border-top: 1px solid var(--line); }
-    .privacy-item h3 { margin: 0 0 6px; font-size: 17px; }
-    .privacy-item p { margin: 0; color: var(--muted); }
-
-    .download {
-      padding-block: clamp(64px, 9vw, 112px);
-      color: #f8f7f4;
-      background: var(--night);
-    }
-    .download-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 40px; }
-    .download .eyebrow { color: #d2bd8a; }
-    .download h2 { max-width: 14ch; margin: 14px 0 12px; font-size: clamp(36px, 5vw, 58px); line-height: 1.04; }
-    .download p { max-width: 60ch; margin: 0; color: var(--night-muted); }
-    .download .button { min-width: 190px; color: var(--night); border-color: #d8c18c; background: #d8c18c; }
-    .download .button:hover { color: var(--night); border-color: #efe1bf; background: #efe1bf; }
-    .download-meta { margin-top: 18px !important; font-size: 13px; }
-
-    .site-footer { padding-block: 24px; background: var(--night); border-top: 1px solid #4b4842; color: var(--night-muted); }
-    .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; }
-    .footer-brand { color: #fff; font-size: 15px; font-weight: 700; letter-spacing: -.035em; }
-    .footer-inner p { margin: 0; font-size: 12px; }
-    .footer-inner a { color: #e3d4b1; font-size: 13px; text-underline-offset: 3px; }
-
-    @media (max-width: 900px) {
-      .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(230px, .68fr); gap: 40px; }
-      .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 32px; }
-    }
-    @media (max-width: 700px) {
-      .header-inner { min-height: 68px; }
-      .menu-toggle { display: inline-flex; }
-      .site-nav {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        display: none;
-        align-items: stretch;
-        gap: 0;
-        padding: 8px var(--gutter) 18px;
-        border-bottom: 1px solid var(--line);
-        background: var(--paper);
-      }
-      .site-nav.is-open { display: flex; flex-direction: column; }
-      .site-nav a { min-height: 48px; display: flex; align-items: center; border-top: 1px solid var(--line); }
-      .site-nav a.nav-download { border-top: 0; }
-      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-      .hero-copy { max-width: 620px; }
-      .app-figure { width: min(100%, 320px); }
-      .archive-layout, .merchant-layout { grid-template-columns: 1fr; gap: 32px; }
-      .process-band { grid-template-columns: 1fr; gap: 12px; }
-      .download-inner { grid-template-columns: 1fr; align-items: start; gap: 28px; }
-    }
-    @media (max-width: 540px) {
-      .brand-note { display: none; }
-      .hero h1 { max-width: 11ch; font-size: clamp(42px, 12vw, 58px); }
-      .hero-actions { align-items: stretch; flex-direction: column; }
-      .hero-actions .button { width: 100%; }
-      .steps, .privacy-grid { grid-template-columns: 1fr; }
-      .detail-row { grid-template-columns: 1fr; gap: 6px; }
-      .merchant-note { padding-left: 18px; }
-      .footer-inner { align-items: flex-start; flex-direction: column; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
-    }
-  </style>
+  ]
+}
+</script>
+<link rel="preload" as="image" href="/assets/images/app-screen.png">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <div class="wrap header-inner">
-      <a class="brand" href="#top" aria-label="CoBatik home">
-        <span class="brand-name">CoBatik</span>
-        <span class="brand-note">Batik virtual try-on</span>
-      </a>
-      <div class="header-right">
-        <nav class="site-nav" id="site-nav" aria-label="Main navigation">
-          <a href="#how">How it works</a>
-          <a href="#archive">The archive</a>
-          <a href="#privacy">Privacy</a>
-          <a class="nav-download" href="#download">Android download</a>
-        </nav>
-        <div class="header-actions">
-          <div class="lang-switch" role="group" aria-label="Language">
-            <a href="/" hreflang="id" lang="id">ID</a>
-            <span class="lang-sep" aria-hidden="true">/</span>
-            <a href="/en/" hreflang="en" lang="en" aria-current="page">EN</a>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" data-od-id="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top" aria-label="CoBatik home">
+      <span class="brand-name">CoBatik</span>
+      <span class="brand-note">Batik&nbsp;VTON</span>
+    </a>
+    <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
+      <span class="menu-glyph" aria-hidden="true"><span></span><span></span></span>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <a href="#how">How it works</a>
+      <a href="#archive">The archive</a>
+      <a href="#craft">The cloth</a>
+      <a href="#privacy">Privacy</a>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <a href="/" hreflang="id" lang="id">ID</a>
+        <span class="lang-sep" aria-hidden="true">·</span>
+        <a href="/en/" hreflang="en" lang="en" aria-current="page">EN</a>
+      </div>
+      <a class="nav-cta" href="#download">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ── Hero ─────────────────────────────────────────────── -->
+  <section class="hero" id="top" aria-labelledby="hero-title" data-od-id="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Android · Virtual batik try-on</p>
+        <h1 class="display hero-title" id="hero-title" data-od-id="hero-title">
+          Wear the<br><em>archive.</em>
+        </h1>
+        <p class="hero-lead">
+          CoBatik is an Android studio for Indonesian batik. Browse a curated archive of
+          hand-drawn cloth — Cirebon, Yogyakarta, Pekalongan, Lasem — take a portrait, and
+          see the motif rendered on you.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#download" data-od-id="hero-cta-download">Download for Android</a>
+          <a class="btn btn-ghost" href="#archive">Explore the archive</a>
+        </div>
+        <ul class="facts" aria-label="App details">
+          <li>Android 7.0+</li>
+          <li>Free</li>
+          <li>No account required</li>
+        </ul>
+      </div>
+
+      <figure class="device-figure" data-od-id="hero-device">
+        <div class="iphone">
+          <span class="iphone-btn iphone-btn--silent" aria-hidden="true"></span>
+          <span class="iphone-btn iphone-btn--volup" aria-hidden="true"></span>
+          <span class="iphone-btn iphone-btn--voldown" aria-hidden="true"></span>
+          <span class="iphone-btn iphone-btn--power" aria-hidden="true"></span>
+          <div class="iphone-screen">
+            <img src="/assets/images/app-screen.png" width="1280" height="2813" alt="The Batik VTON app home screen: an Engrasia collection view over a photograph of a crimson and gold Mega Mendung batik shirt, with the featured piece captioned Cirebon, Jawa Barat." fetchpriority="high" decoding="async">
           </div>
-          <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
-            <span class="menu-glyph" aria-hidden="true"><span></span><span></span><span></span></span>
+        </div>
+        <figcaption class="device-cap">Batik VTON on Android — the featured piece and the Engrasia collection.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ── Cinematic plate ──────────────────────────────────── -->
+  <section class="plate" aria-labelledby="plate-cap" data-od-id="plate-imogiri">
+    <img class="plate-img" src="/assets/images/maestro-batik-tulis-di-imogiri.jpg" width="1920" height="1280"
+         alt="A master batik artisan works by shafts of light and rising smoke, a length of waxed cloth glowing gold in front of her." decoding="async">
+    <div class="wrap plate-inner">
+      <p class="plate-cap display" id="plate-cap">Drawn by hand, a wax dot at a time.</p>
+      <p class="plate-meta">Batik tulis · master artisan, Imogiri, Yogyakarta</p>
+    </div>
+  </section>
+
+  <!-- ── How it works ─────────────────────────────────────── -->
+  <section class="section" id="how" aria-labelledby="how-title" data-od-id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">How it works</p>
+        <h2 class="display h2" id="how-title">Four steps, one portrait.</h2>
+      </div>
+      <ol class="steps" data-od-id="how-steps">
+        <li class="step" data-od-id="step-01">
+          <span class="step-num">01</span>
+          <h3>Explore the archive</h3>
+          <p>Traditions from Cirebon, Yogyakarta, Central Java, Solo and beyond — with the story behind each motif.</p>
+        </li>
+        <li class="step" data-od-id="step-02">
+          <span class="step-num">02</span>
+          <h3>Choose a garment</h3>
+          <p>A long-sleeve shirt, a formal suit, a linen set, or a jarit.</p>
+        </li>
+        <li class="step" data-od-id="step-03">
+          <span class="step-num">03</span>
+          <h3>Take a portrait</h3>
+          <p>Shoot in-app. The photo is straightened, resized and compressed before it ever uploads.</p>
+        </li>
+        <li class="step" data-od-id="step-04">
+          <span class="step-num">04</span>
+          <h3>See the try-on</h3>
+          <p>A server-side model fits the motif onto your portrait and returns the preview.</p>
+        </li>
+      </ol>
+
+      <figure class="process" data-od-id="process-figure">
+        <video class="process-video" src="/assets/video/batik-vton-loop.mp4"
+               poster="/assets/video/batik-vton-loop-poster.jpg"
+               width="1280" height="852" muted loop playsinline preload="metadata"></video>
+        <figcaption>Batik VTON in motion — the <em>app</em>, the wax drawn by hand, and the cloth it is drawn from.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ── Archive ──────────────────────────────────────────── -->
+  <section class="section section-quiet" id="archive" aria-labelledby="archive-title" data-od-id="archive">
+    <div class="wrap">
+      <div class="section-head section-head--split">
+        <div>
+          <p class="eyebrow">The archive</p>
+          <h2 class="display h2" id="archive-title">Every piece carries a place.</h2>
+        </div>
+        <p class="section-note">
+          Drawings of real cloth, catalogued by motif and region. Open any piece to see it whole.
+        </p>
+      </div>
+
+      <ul class="motif-index" aria-label="Motif index">
+        <li><span class="mi-num">01</span> Mega Mendung <em>Cirebon</em></li>
+        <li><span class="mi-num">02</span> Kawung <em>Central Java</em></li>
+        <li><span class="mi-num">03</span> Kawung <em>Madura</em></li>
+        <li><span class="mi-num">04</span> Lerek Kawung <em>Tiga Negeri</em></li>
+        <li><span class="mi-num">05</span> Parang Klithik <em>Inland Java</em></li>
+        <li><span class="mi-num">06</span> Parang Dewa Ruci <em>Lasem</em></li>
+      </ul>
+
+      <div class="gallery" data-od-id="archive-gallery">
+        <div class="gcol">
+          <button class="piece" type="button" data-od-id="piece-mega-mendung"
+            data-full="/assets/images/batik-mega-mendung.jpg"
+            data-name="Mega Mendung" data-region="Cirebon, West Java" data-credit="Photo: Gunarta · CC BY-SA 4.0 · Wikimedia Commons">
+            <img src="/assets/images/batik-mega-mendung.jpg" width="1920" height="2574" loading="lazy" decoding="async"
+                 alt="Mega Mendung: layered indigo rain-cloud curls outlined in white on a deep blue ground.">
+            <span class="piece-cap"><b>01 · Mega Mendung</b><i>Cirebon</i></span>
+          </button>
+
+          <button class="piece" type="button" data-od-id="piece-kawung-java"
+            data-full="/assets/images/batik-pattern-kawung.jpg"
+            data-name="Kawung" data-region="Central Java" data-credit="Photo: Alteaven · CC BY-SA 3.0 · Wikimedia Commons">
+            <img src="/assets/images/batik-pattern-kawung.jpg" width="1920" height="1920" loading="lazy" decoding="async"
+                 alt="Kawung: a grid of soga-brown ovals with dark centres on cream, the classic palm-sugar motif.">
+            <span class="piece-cap"><b>02 · Kawung</b><i>Central Java</i></span>
+          </button>
+        </div>
+
+        <div class="gcol">
+          <button class="piece" type="button" data-od-id="piece-kawung-madura"
+            data-full="/assets/images/batik-madura-dengan-motif-kawung.jpg"
+            data-name="Kawung" data-region="Madura" data-credit="Photo: Bella Kharisma Rindiantika · CC BY-SA 4.0 · Wikimedia Commons">
+            <img src="/assets/images/batik-madura-dengan-motif-kawung.jpg" width="1920" height="2880" loading="lazy" decoding="async"
+                 alt="Madura batik: bold white and cobalt florals framed in brown on black.">
+            <span class="piece-cap"><b>03 · Kawung</b><i>Madura</i></span>
+          </button>
+
+          <button class="piece" type="button" data-od-id="piece-lerek-kawung"
+            data-full="/assets/images/kain-motif-lerek-kawung-latohan-melati-batik-tiga-negeri.jpg"
+            data-name="Lerek Kawung" data-region="Tiga Negeri" data-credit="Photo: Fhikri Latifi · CC BY 4.0 · Wikimedia Commons">
+            <img src="/assets/images/kain-motif-lerek-kawung-latohan-melati-batik-tiga-negeri.jpg" width="1920" height="1280" loading="lazy" decoding="async"
+                 alt="Tiga Negeri batik: diagonal bands of scarlet, cobalt and ink with white blossom medallions.">
+            <span class="piece-cap"><b>04 · Lerek Kawung</b><i>Tiga Negeri</i></span>
+          </button>
+        </div>
+
+        <div class="gcol">
+          <button class="piece" type="button" data-od-id="piece-parang-klithik"
+            data-full="/assets/images/batik-pedalaman-parang-klithik.jpg"
+            data-name="Parang Klithik" data-region="Inland Java" data-credit="Photo: Alteaven · CC BY-SA 3.0 · Wikimedia Commons">
+            <img src="/assets/images/batik-pedalaman-parang-klithik.jpg" width="1920" height="1280" loading="lazy" decoding="async"
+                 alt="Parang Klithik: the blade-like parang diagonal in soga brown and cream.">
+            <span class="piece-cap"><b>05 · Parang Klithik</b><i>Inland Java</i></span>
+          </button>
+
+          <button class="piece" type="button" data-od-id="piece-parang-dewa-ruci"
+            data-full="/assets/images/kain-batik-lasem-motif-parang-dewa-ruci.jpg"
+            data-name="Parang Dewa Ruci" data-region="Lasem" data-credit="Photo: Candramawa99 · CC BY 4.0 · Wikimedia Commons">
+            <img src="/assets/images/kain-batik-lasem-motif-parang-dewa-ruci.jpg" width="1920" height="1280" loading="lazy" decoding="async"
+                 alt="Lasem batik: a red and white parang beside a black panel with a dragon and phoenix in cobalt, jade and gold.">
+            <span class="piece-cap"><b>06 · Parang Dewa Ruci</b><i>Lasem</i></span>
+          </button>
+
+          <button class="piece" type="button" data-od-id="piece-boutique"
+            data-full="/assets/images/batik-trusmi-cirebon-16-.jpg"
+            data-name="The boutique" data-region="Trusmi, Cirebon" data-credit="Photo: Fpangestuphotographer · CC BY-SA 4.0 · Wikimedia Commons">
+            <img src="/assets/images/batik-trusmi-cirebon-16-.jpg" width="1920" height="1280" loading="lazy" decoding="async"
+                 alt="A batik showroom: cloth in green, violet and gold displayed on carved stands against a brick wall.">
+            <span class="piece-cap"><b>07 · The boutique</b><i>Trusmi, Cirebon</i></span>
           </button>
         </div>
       </div>
     </div>
-  </header>
+  </section>
 
-  <main id="main">
-    <section class="hero" id="top" aria-labelledby="hero-title">
-      <div class="wrap hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow">Android · Virtual batik try-on</p>
-          <h1 class="display" id="hero-title">Try Indonesian batik on your portrait.</h1>
-          <p class="hero-lead">CoBatik presents Batik VTON, an Android app for exploring a curated batik archive, capturing a portrait and previewing a batik look generated by an AI model on the server.</p>
-          <div class="hero-actions">
-            <a class="button" href="#download">Get the Android APK</a>
-            <a class="button button-secondary" href="#how">See how it works</a>
-          </div>
-          <ul class="app-facts" aria-label="App details">
-            <li>Android 7.0+ (API 24)</li>
-            <li>Free</li>
-            <li>No account required</li>
-          </ul>
-        </div>
-        <figure class="app-figure">
-          <div class="preview-device" role="img" aria-label="Batik VTON Android app preview displayed inside an iPhone mockup">
-            <span class="preview-hardware-button silent" aria-hidden="true"></span>
-            <span class="preview-hardware-button volume-up" aria-hidden="true"></span>
-            <span class="preview-hardware-button volume-down" aria-hidden="true"></span>
-            <span class="preview-hardware-button power" aria-hidden="true"></span>
-            <div class="preview-device-screen">
-              <img src="/assets/app-preview.png" width="1280" height="2856" alt="Batik VTON Android app preview for virtual batik try-on" fetchpriority="high" decoding="async">
-              <div class="preview-status-bar" aria-hidden="true">
-                <span>9:41</span>
-                <span class="preview-status-icons">
-                  <svg viewBox="0 0 18 12"><path d="M1 10.5h2V8H1v2.5Zm4 0h2V5.5H5v5Zm4 0h2V3H9v7.5Zm4 0h2V.5h-2v10Z"/></svg>
-                  <svg viewBox="0 0 18 12"><path d="M9 11.2 7.2 9.4a2.55 2.55 0 0 1 3.6 0L9 11.2Zm4.1-4.1-1.35 1.35a3.9 3.9 0 0 0-5.5 0L4.9 7.1a5.8 5.8 0 0 1 8.2 0Zm3-3-1.35 1.35a8.15 8.15 0 0 0-11.5 0L1.9 4.1a10.05 10.05 0 0 1 14.2 0Z"/></svg>
-                  <svg class="battery" viewBox="0 0 27 12"><path fill-rule="evenodd" d="M2.5 1h19A2.5 2.5 0 0 1 24 3.5v5a2.5 2.5 0 0 1-2.5 2.5h-19A2.5 2.5 0 0 1 0 8.5v-5A2.5 2.5 0 0 1 2.5 1Zm0 1A1.5 1.5 0 0 0 1 3.5v5A1.5 1.5 0 0 0 2.5 10h19A1.5 1.5 0 0 0 23 8.5v-5A1.5 1.5 0 0 0 21.5 2h-19Zm.5 1h17.5A1.5 1.5 0 0 1 22 4.5v3A1.5 1.5 0 0 1 20.5 9H3V3Zm22 1.5a1.5 1.5 0 0 1 0 3v-3Z"/></svg>
-                </span>
-              </div>
-              <div class="preview-dynamic-island" aria-hidden="true"></div>
-              <div class="preview-home-indicator" aria-hidden="true"></div>
-            </div>
-          </div>
-          <figcaption>Android app preview shown inside an iPhone frame</figcaption>
+  <!-- ── Craft / heritage ─────────────────────────────────── -->
+  <section class="section" id="craft" aria-labelledby="craft-title" data-od-id="craft">
+    <div class="wrap craft-grid">
+      <div class="craft-copy">
+        <p class="eyebrow">The cloth</p>
+        <h2 class="display h2" id="craft-title">Hand-drawn, then worn.</h2>
+        <p class="lead">
+          The archive is curated from <strong>Engrasia</strong>, an Indonesian batik tulis
+          boutique. Its hand-drawn cloth comes from Cirebon, Pekalongan, Lasem and
+          Yogyakarta — wax, dye and patient hands, one panel at a time.
+        </p>
+        <p>
+          Every motif is older than the phone in your hand. CoBatik does not redraw the
+          cloth — it puts the real thing on you.
+        </p>
+        <a class="link" href="https://engrasia.com/collections/kain-batik-tulis" target="_blank" rel="noopener noreferrer">See Engrasia's collection</a>
+      </div>
+      <div class="craft-media" data-od-id="craft-media">
+        <figure class="craft-figure">
+          <img src="/assets/images/batik-artisan-drawing-wax-with-canting-in-trusmi-cirebon-indonesia.jpg"
+               width="1920" height="2880" loading="lazy" decoding="async"
+               alt="Close view of an artisan's hands drawing a fine wax line with a canting over floral cloth.">
+          <figcaption>Drawing a wax line, Trusmi, Cirebon.</figcaption>
+        </figure>
+        <figure class="craft-figure">
+          <img src="/assets/images/intergenerational-batik-tulis-practice-in-trusmi-cirebon-elder-artisan-applying-wax-with-canting.jpg"
+               width="1920" height="1311" loading="lazy" decoding="async"
+               alt="An elder artisan draws a fine line of wax with a canting onto batik cloth, another maker working behind her.">
+          <figcaption>An elder craftsman at work, Trusmi, Cirebon.</figcaption>
+        </figure>
+        <figure class="craft-figure">
+          <img src="/assets/images/women-making-batik-ketelan-crop.jpg" width="1244" height="1578" loading="lazy" decoding="async"
+               alt="A group of women batik-makers work together on cloths stretched over low frames.">
+          <figcaption>A workshop at work in Ketelan.</figcaption>
+        </figure>
+        <figure class="craft-figure">
+          <img src="/assets/images/indonesian-batik-display.jpg" width="1825" height="2551" loading="lazy" decoding="async"
+               alt="A museum case holding antique batik panels, a carved chest and the tools of batik making.">
+          <figcaption>Antique batik and tools, museum display.</figcaption>
         </figure>
       </div>
-    </section>
-
-    <section class="section section-surface" id="how" aria-labelledby="how-title">
-      <div class="wrap">
-        <div class="section-heading">
-          <p class="eyebrow">How it works / 01</p>
-          <h2 class="display" id="how-title">From a batik archive to a personal preview.</h2>
-          <p>Choose a piece, take a portrait in the app, then see the selected batik visualized on your photo.</p>
-        </div>
-        <ol class="steps">
-          <li class="step">
-            <span class="step-number">01</span>
-            <h3>Explore the archive</h3>
-            <p>Browse batik traditions from Cirebon, Yogyakarta, Central Java, Solo and more.</p>
-          </li>
-          <li class="step">
-            <span class="step-number">02</span>
-            <h3>Choose a garment</h3>
-            <p>Select a long-sleeve shirt, formal suit, linen set or jarit.</p>
-          </li>
-          <li class="step">
-            <span class="step-number">03</span>
-            <h3>Take a portrait</h3>
-            <p>Capture a photo in the app. It corrects orientation, resizes and compresses the image before upload.</p>
-          </li>
-          <li class="step">
-            <span class="step-number">04</span>
-            <h3>View the try-on</h3>
-            <p>A server-side model visualizes the selected batik on your portrait and returns a preview.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <section class="section" id="archive" aria-labelledby="archive-title">
-      <div class="wrap archive-layout">
-        <div class="section-heading">
-          <p class="eyebrow">The archive / 02</p>
-          <h2 class="display" id="archive-title">Each piece carries a place and a story.</h2>
-          <p>The curated archive pairs batik garments with their regional origins, stories and meanings.</p>
-          <p class="motif-list">Mega Mendung · Sawunggaling · Tugu Kembang Kreasi · Burung Hong</p>
-        </div>
-        <div class="archive-details">
-          <div class="detail-row">
-            <h3>Regions</h3>
-            <p>Cirebon, Yogyakarta, Central Java, Solo and other batik traditions.</p>
-          </div>
-          <div class="detail-row">
-            <h3>Garments</h3>
-            <p>Long-sleeve shirts, formal suits, linen sets and jarit.</p>
-          </div>
-          <div class="detail-row">
-            <h3>Virtual fitting</h3>
-            <p>The app uses FASHN VTON 1.5 on a server. The project page notes that the try-on model needs GPU memory, so image generation happens off the phone.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-soft" id="boutique" aria-labelledby="boutique-title">
-      <div class="wrap merchant-layout">
-        <div class="section-heading">
-          <p class="eyebrow">Curated boutique / 03</p>
-          <h2 class="display" id="boutique-title">Selected from Engrasia.</h2>
-          <p>The project page describes this archive as curated from Engrasia, an Indonesian batik tulis boutique. It features hand-drawn cloth from Cirebon, Pekalongan, Lasem and Yogyakarta, selected from the original collection.</p>
-        </div>
-        <div class="merchant-note">
-          <p>See the original batik tulis collection at Engrasia.</p>
-          <a href="https://engrasia.com/collections/kain-batik-tulis" target="_blank" rel="noopener noreferrer">Visit Engrasia’s collection</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-surface" id="privacy" aria-labelledby="privacy-title">
-      <div class="wrap">
-        <div class="section-heading">
-          <p class="eyebrow">Photo handling / 04</p>
-          <h2 class="display" id="privacy-title">A portrait is used for the preview.</h2>
-          <p>These details follow the app project page’s description of its photo handling.</p>
-        </div>
-        <div class="privacy-grid">
-          <article class="privacy-item">
-            <h3>No account or tracking</h3>
-            <p>The app page says no registration, login, analytics SDK or advertising identifier is used.</p>
-          </article>
-          <article class="privacy-item">
-            <h3>Temporary uploads</h3>
-            <p>Portraits are uploaded to generate a try-on result; temporary files are deleted after each request.</p>
-          </article>
-          <article class="privacy-item">
-            <h3>No saved history</h3>
-            <p>The project page says results are not saved, history is not retained and no profile is created.</p>
-          </article>
-          <article class="privacy-item">
-            <h3>Processed, not archived</h3>
-            <p>Images are sent to the try-on model to produce a result, then discarded, according to the app page.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="download" id="download" aria-labelledby="download-title">
-      <div class="wrap download-inner">
-        <div>
-          <p class="eyebrow">Android app</p>
-          <h2 class="display" id="download-title">Get Batik VTON.</h2>
-          <p>Download the Android APK from the project’s GitHub Releases. Compatible with Android 7.0 (API 24) and later.</p>
-          <p class="download-meta">Free · No account required</p>
-        </div>
-        <a class="button" href="https://github.com/DaniZakaria63/batik-vton-mobile/releases" target="_blank" rel="noopener noreferrer">Download Android APK</a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="wrap footer-inner">
-      <span class="footer-brand">CoBatik</span>
-      <p>Batik VTON · Android virtual try-on</p>
-      <a href="https://github.com/DaniZakaria63/batik-vton-mobile/releases" target="_blank" rel="noopener noreferrer">GitHub Releases</a>
     </div>
-  </footer>
+  </section>
 
-  <script>
-    const menuButton = document.querySelector(".menu-toggle");
-    const siteNav = document.querySelector(".site-nav");
+  <!-- ── Privacy ──────────────────────────────────────────── -->
+  <section class="section section-quiet" id="privacy" aria-labelledby="privacy-title" data-od-id="privacy">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Photo handling</p>
+        <h2 class="display h2" id="privacy-title">Your portrait, processed — not kept.</h2>
+      </div>
+      <dl class="privacy-grid">
+        <div class="privacy-item"><dt>No account, no tracking</dt><dd>No registration, no login, no analytics SDK and no advertising identifier.</dd></div>
+        <div class="privacy-item"><dt>Temporary uploads</dt><dd>The portrait is uploaded only to generate the try-on; temporary files are deleted after each request.</dd></div>
+        <div class="privacy-item"><dt>Nothing saved</dt><dd>Results are not stored, no history is kept, and no profile is built.</dd></div>
+        <div class="privacy-item"><dt>Processed, then discarded</dt><dd>Images reach the model to produce a preview, and leave with it.</dd></div>
+      </dl>
+    </div>
+  </section>
 
-    menuButton.addEventListener("click", () => {
-      const isOpen = menuButton.getAttribute("aria-expanded") !== "true";
-      menuButton.setAttribute("aria-expanded", String(isOpen));
-      menuButton.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
-      siteNav.classList.toggle("is-open", isOpen);
+  <!-- ── Download ─────────────────────────────────────────── -->
+  <section class="download" id="download" aria-labelledby="download-title" data-od-id="download">
+    <img height="2574" width="1920" class="download-bg" src="/assets/images/batik-mega-mendung.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+    <div class="wrap download-inner">
+      <div>
+        <p class="eyebrow eyebrow--light">Android app</p>
+        <h2 class="display download-title" id="download-title">Get Batik VTON.</h2>
+        <p class="download-lead">
+          Download the APK from the project's GitHub Releases. Runs on Android 7.0 (API 24)
+          and later.
+        </p>
+        <p class="download-meta">Free · No account required</p>
+      </div>
+      <a class="btn btn-light" href="https://github.com/DaniZakaria63/batik-vton-mobile/releases" target="_blank" rel="noopener noreferrer" data-od-id="download-cta">Download Android APK</a>
+    </div>
+  </section>
+
+  <!-- ── Credits ──────────────────────────────────────────── -->
+  <section class="credits" id="credits" aria-labelledby="credits-title" data-od-id="credits">
+    <div class="wrap">
+      <h2 class="credits-title" id="credits-title">Cloth photography</h2>
+      <p class="credits-note">
+        Batik images are real cloth photographed by Wikimedia Commons contributors and used
+        under their licences. Attribution is required and kept here.
+      </p>
+      <ul class="credits-list">
+        <li>Mega Mendung — Gunarta · CC BY-SA 4.0</li>
+        <li>Kawung — Alteaven · CC BY-SA 3.0</li>
+        <li>Parang Klithik — Alteaven · CC BY-SA 3.0</li>
+        <li>Parang Dewa Ruci — Candramawa99 · CC BY 4.0</li>
+        <li>Kawung (Madura) — Bella Kharisma Rindiantika · CC BY-SA 4.0</li>
+        <li>Lerek Kawung — Fhikri Latifi · CC BY 4.0</li>
+        <li>Boutique, Trusmi — Fpangestuphotographer · CC BY-SA 4.0</li>
+        <li>Artisan with canting — Ahaetulla · CC BY-SA 4.0</li>
+        <li>Artisan drawing wax — Ahaetulla · CC BY-SA 4.0</li>
+        <li>Elder artisan, Trusmi — Ahaetulla · CC BY-SA 4.0</li>
+        <li>Master artisan, Imogiri — Aconkyeah · CC BY-SA 4.0</li>
+        <li>Workshop, Ketelan — Stephen Kennedy · CC BY 2.0</li>
+        <li>Museum display — Gunawan Kartapranata · CC BY-SA 3.0</li>
+      </ul>
+      <p class="credits-src">All via <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>. Share-alike licences apply to adapted copies.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span class="footer-brand">CoBatik</span>
+    <p>Batik VTON · Android virtual try-on</p>
+    <a href="https://github.com/DaniZakaria63/batik-vton-mobile/releases" target="_blank" rel="noopener noreferrer">GitHub Releases</a>
+  </div>
+</footer>
+
+<!-- ── Lightbox ───────────────────────────────────────────── -->
+<div class="lightbox" data-od-id="lightbox" role="dialog" aria-modal="true" aria-label="Batik piece detail" hidden>
+  <button class="lightbox-close" type="button" aria-label="Close">&times;</button>
+  <figure class="lightbox-figure">
+    <img class="lightbox-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="">
+    <figcaption class="lightbox-cap">
+      <b class="lightbox-name"></b>
+      <i class="lightbox-region"></i>
+      <span class="lightbox-credit"></span>
+    </figcaption>
+  </figure>
+</div>
+
+<script>
+(function () {
+  /* Nav ---------------------------------------------------- */
+  var menu = document.querySelector('.menu-toggle');
+  var nav = document.querySelector('.site-nav');
+  if (menu && nav) {
+    menu.addEventListener('click', function () {
+      var open = menu.getAttribute('aria-expanded') !== 'true';
+      menu.setAttribute('aria-expanded', String(open));
+      menu.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+      nav.classList.toggle('is-open', open);
     });
+    nav.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        nav.classList.remove('is-open');
+        menu.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
 
-    siteNav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        siteNav.classList.remove("is-open");
-        menuButton.setAttribute("aria-expanded", "false");
-        menuButton.setAttribute("aria-label", "Open navigation");
+  /* Header hairline on scroll ------------------------------ */
+  var header = document.querySelector('.site-header');
+  var onScroll = function () {
+    header.classList.toggle('is-scrolled', window.scrollY > 8);
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* Reveal ------------------------------------------------- */
+  var revealables = document.querySelectorAll(
+    '.section-head, .step, .piece, .craft-copy, .craft-figure, .privacy-item, .process, .plate-inner, .download-inner, .motif-index'
+  );
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    revealables.forEach(function (el, i) {
+      el.classList.add('reveal');
+      el.style.transitionDelay = (Math.min(i % 6, 5) * 55) + 'ms';
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
       });
-    });
-  </script>
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    revealables.forEach(function (el) { io.observe(el); });
+  }
+
+  /* The film ----------------------------------------------- */
+  var film = document.querySelector('.process-video');
+  if (film) {
+    var playFilm = function () {
+      var p = film.play();
+      if (p && p.catch) p.catch(function () {});
+    };
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      film.removeAttribute('autoplay');
+      film.pause();
+    } else if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { playFilm(); } else { film.pause(); }
+        });
+      }, { threshold: 0.12 }).observe(film);
+    } else {
+      playFilm();
+    }
+  }
+
+  /* Lightbox ----------------------------------------------- */
+  var box = document.querySelector('.lightbox');
+  var boxImg = box.querySelector('.lightbox-img');
+  var BLANK = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+  var boxName = box.querySelector('.lightbox-name');
+  var boxRegion = box.querySelector('.lightbox-region');
+  var boxCredit = box.querySelector('.lightbox-credit');
+  var lastFocus = null;
+
+  function openBox(btn) {
+    lastFocus = btn;
+    var img = btn.querySelector('img');
+    boxImg.src = btn.dataset.full;
+    boxImg.alt = img ? img.alt : '';
+    boxName.textContent = btn.dataset.name;
+    boxRegion.textContent = btn.dataset.region;
+    boxCredit.textContent = btn.dataset.credit;
+    box.hidden = false;
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(function () { box.classList.add('is-open'); });
+    box.querySelector('.lightbox-close').focus();
+  }
+  function closeBox() {
+    box.classList.remove('is-open');
+    document.body.style.overflow = '';
+    window.setTimeout(function () { box.hidden = true; boxImg.src = BLANK; }, 220);
+    if (lastFocus) lastFocus.focus();
+  }
+  document.querySelectorAll('.piece').forEach(function (btn) {
+    btn.addEventListener('click', function () { openBox(btn); });
+  });
+  box.querySelector('.lightbox-close').addEventListener('click', closeBox);
+  box.addEventListener('click', function (e) {
+    if (e.target === box || e.target.classList.contains('lightbox-figure')) closeBox();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !box.hidden) closeBox();
+  });
+})();
+</script>
 </body>
 </html>
