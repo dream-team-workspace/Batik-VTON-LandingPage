@@ -3,11 +3,13 @@
 The CoBatik landing page is deployed by GitHub Actions
 (`.github/workflows/ci-cd.yml`):
 
-- **Pull requests** — the `lint` job validates `index.html` with
+- **Pull requests** — the `lint` job validates the HTML pages
+  (`index.html`, `en/index.html`) with
   [html-validate](https://html-validate.org/).
-- **Push to `master`** — the `deploy` job rsyncs `index.html` and `assets/`
-  to the server and runs a smoke test against
-  <https://cobatik.dream-team.works/>.
+- **Push to `master`** — the `deploy` job rsyncs the site (`index.html`,
+  `en/index.html`, `robots.txt`, `sitemap.xml`, `assets/`) to the server and
+  runs a smoke test against <https://cobatik.dream-team.works/> and
+  <https://cobatik.dream-team.works/en/>.
 
 ## How it works
 
@@ -18,6 +20,17 @@ The CoBatik landing page is deployed by GitHub Actions
 - nginx serves the webroot on `127.0.0.1:8080` (not port 80), and the
   server's Cloudflare Tunnel (`ovh-server`) routes
   `cobatik.dream-team.works` to `http://localhost:8080`.
+
+## Site structure
+
+- `/` — Bahasa Indonesia (default language, referenced by
+  `hreflang="x-default"`).
+- `/en/` — English.
+
+Both pages cross-reference each other with `rel="alternate"` hreflang tags,
+carry their own canonical URL, Open Graph/Twitter metadata and JSON-LD
+(`WebSite` + `MobileApplication`). `robots.txt` and `sitemap.xml` are
+deployed at the site root.
 
 ## Required repository secrets
 
