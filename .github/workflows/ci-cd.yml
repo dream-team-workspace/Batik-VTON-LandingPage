@@ -1,0 +1,108 @@
+name: CI/CD
+
+# Lint on pull requests, deploy to https://cobatik.dream-team.works on
+# every push to master.
+#
+# How deployment works:
+#   rsync the site (index.html + assets/) to the server as the `deploy`
+#   user over key-only SSH (direct IPv4 connection; no Cloudflare tunnel
+#   involved in the deploy step).
+#
+# Required repository secrets (see DEPLOY.md):
+#   DEPLOY_SSH_KEY   private key of the github-actions-cobatik deploy key
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+# Only one deploy at a time; do not cancel a run that is already pushing files.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  DEPLOY_HOST: 139.99.88.23
+  DEPLOY_USER: deploy
+  DEPLOY_PATH: /var/www/cobatik.dream-team.works
+
+jobs:
+  lint:
+    name: Lint
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Validate HTML
+        run: npx --yes html-validate@11.16.2 index.html
+
+  deploy:
+    name: Deploy
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check deployment secrets are configured
+        run: |
+          if [ -z "${{ secrets.DEPLOY_SSH_KEY }}" ]; then
+            echo "::error::Secret DEPLOY_SSH_KEY is not set (see DEPLOY.md)"
+            exit 1
+          fi
+
+      - name: Stage static site
+        run: |
+          test -s index.html
+          mkdir -p _site
+          cp index.html _site/index.html
+          cp -r assets _site/assets
+          echo "Staged $(find _site -type f | wc -l) files"
+
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          cat >> ~/.ssh/config <<SSH_CONFIG
+          Host deploy-target
+            HostName ${DEPLOY_HOST}
+            User ${DEPLOY_USER}
+            IdentityFile ~/.ssh/deploy_key
+            IdentitiesOnly yes
+            StrictHostKeyChecking accept-new
+          SSH_CONFIG
+
+      - name: Verify SSH connectivity
+        run: ssh -o BatchMode=yes -o ConnectTimeout=15 deploy-target 'echo SSH_OK'
+
+      - name: Deploy via rsync
+        run: |
+          rsync -az --delete --chmod=D755,F644 -e ssh ./_site/ "deploy-target:${DEPLOY_PATH}/"
+
+      - name: Smoke test
+        run: |
+          ok=0
+          for i in $(seq 1 6); do
+            if curl -fsS --max-time 15 "https://cobatik.dream-team.works/" | grep -q "CoBatik"; then
+              ok=1
+              break
+            fi
+            sleep 5
+          done
+          if [ "$ok" != "1" ]; then
+            echo "::error::Smoke test failed - the live page did not return the expected content"
+            exit 1
+          fi
+          echo "Live page verified."
