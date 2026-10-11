@@ -1,11 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f4f4f1">
-  <meta name="description" content="CoBatik presents Batik VTON, an Android virtual try-on app for Indonesian batik. Explore a curated archive, capture a portrait and preview a look.">
-  <title>CoBatik — Virtual Batik Try-On for Android</title>
+  <title>CoBatik — Virtual Try-On Batik Indonesia untuk Android</title>
+  <meta name="description" content="CoBatik menghadirkan Batik VTON, aplikasi Android gratis untuk mencoba batik secara virtual. Jelajahi arsip batik Nusantara dan lihat hasil try-on di fotomu.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://cobatik.dream-team.works/">
+  <link rel="alternate" hreflang="id" href="https://cobatik.dream-team.works/">
+  <link rel="alternate" hreflang="en" href="https://cobatik.dream-team.works/en/">
+  <link rel="alternate" hreflang="x-default" href="https://cobatik.dream-team.works/">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CoBatik">
+  <meta property="og:locale" content="id_ID">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:url" content="https://cobatik.dream-team.works/">
+  <meta property="og:title" content="CoBatik — Virtual Try-On Batik Indonesia untuk Android">
+  <meta property="og:description" content="CoBatik menghadirkan Batik VTON, aplikasi Android gratis untuk mencoba batik secara virtual. Jelajahi arsip batik Nusantara dan lihat hasil try-on di fotomu.">
+  <meta property="og:image" content="https://cobatik.dream-team.works/assets/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="CoBatik — virtual try-on batik Indonesia untuk Android">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CoBatik — Virtual Try-On Batik Indonesia untuk Android">
+  <meta name="twitter:description" content="CoBatik menghadirkan Batik VTON, aplikasi Android gratis untuk mencoba batik secara virtual. Jelajahi arsip batik Nusantara dan lihat hasil try-on di fotomu.">
+  <meta name="twitter:image" content="https://cobatik.dream-team.works/assets/og-cover.png">
+  <meta name="twitter:image:alt" content="CoBatik — virtual try-on batik Indonesia untuk Android">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://cobatik.dream-team.works/#website",
+        "url": "https://cobatik.dream-team.works/",
+        "name": "CoBatik",
+        "description": "CoBatik menghadirkan Batik VTON, aplikasi Android untuk mencoba batik Indonesia secara virtual.",
+        "inLanguage": "id-ID"
+      },
+      {
+        "@type": "MobileApplication",
+        "@id": "https://cobatik.dream-team.works/#app",
+        "name": "Batik VTON",
+        "alternateName": "CoBatik",
+        "description": "Aplikasi Android gratis untuk mencoba baju batik secara virtual: jelajahi arsip batik Nusantara, ambil potret, dan lihat hasil try-on.",
+        "operatingSystem": "Android 7.0+",
+        "applicationCategory": "ShoppingApplication",
+        "inLanguage": ["id", "en"],
+        "downloadUrl": "https://github.com/DaniZakaria63/batik-vton-mobile/releases",
+        "installUrl": "https://github.com/DaniZakaria63/batik-vton-mobile/releases",
+        "sameAs": ["https://github.com/DaniZakaria63/batik-vton-mobile"],
+        "screenshot": "https://cobatik.dream-team.works/assets/app-preview.png",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "IDR" }
+      }
+    ]
+  }
+  </script>
   <style>
     :root {
       color-scheme: light;
@@ -96,6 +150,20 @@
     }
     .brand-name { font-size: 23px; font-weight: 720; letter-spacing: -.075em; }
     .brand-note { color: var(--muted); font-size: 11px; letter-spacing: .045em; }
+    .header-right { display: flex; align-items: center; gap: clamp(18px, 2.5vw, 34px); }
+    .header-actions { display: flex; align-items: center; gap: 16px; }
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 650;
+      letter-spacing: .02em;
+    }
+    .lang-switch a { color: var(--muted); text-decoration: none; transition: color var(--ease); }
+    .lang-switch a:hover { color: var(--brown-dark); }
+    .lang-switch a[aria-current="page"] { color: var(--ink); }
+    .lang-switch .lang-sep { color: var(--line); }
     .site-nav { display: flex; align-items: center; gap: clamp(18px, 2.5vw, 34px); }
     .site-nav a {
       color: var(--muted);
@@ -414,22 +482,31 @@
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main">Lewati ke konten</a>
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="brand" href="#top" aria-label="CoBatik home">
+      <a class="brand" href="#top" aria-label="Beranda CoBatik">
         <span class="brand-name">CoBatik</span>
-        <span class="brand-note">Batik virtual try-on</span>
+        <span class="brand-note">Coba batik virtual</span>
       </a>
-      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
-        <span class="menu-glyph" aria-hidden="true"><span></span><span></span><span></span></span>
-      </button>
-      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
-        <a href="#how">How it works</a>
-        <a href="#archive">The archive</a>
-        <a href="#privacy">Privacy</a>
-        <a class="nav-download" href="#download">Android download</a>
-      </nav>
+      <div class="header-right">
+        <nav class="site-nav" id="site-nav" aria-label="Navigasi utama">
+          <a href="#how">Cara kerja</a>
+          <a href="#archive">Arsip batik</a>
+          <a href="#privacy">Privasi</a>
+          <a class="nav-download" href="#download">Unduh Android</a>
+        </nav>
+        <div class="header-actions">
+          <div class="lang-switch" role="group" aria-label="Bahasa">
+            <a href="/" hreflang="id" lang="id" aria-current="page">ID</a>
+            <span class="lang-sep" aria-hidden="true">/</span>
+            <a href="/en/" hreflang="en" lang="en">EN</a>
+          </div>
+          <button class="menu-toggle" type="button" aria-label="Buka navigasi" aria-expanded="false" aria-controls="site-nav">
+            <span class="menu-glyph" aria-hidden="true"><span></span><span></span><span></span></span>
+          </button>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -437,27 +514,27 @@
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Android · Virtual batik try-on</p>
-          <h1 class="display" id="hero-title">Try Indonesian batik on your portrait.</h1>
-          <p class="hero-lead">CoBatik presents Batik VTON, an Android app for exploring a curated batik archive, capturing a portrait and previewing a batik look generated by an AI model on the server.</p>
+          <p class="eyebrow">Android · Coba batik virtual</p>
+          <h1 class="display" id="hero-title">Coba batik Indonesia secara virtual.</h1>
+          <p class="hero-lead">CoBatik mempersembahkan Batik VTON, aplikasi Android untuk menjelajahi arsip batik pilihan, mengambil potret, dan melihat pratinjau tampilan batik yang dihasilkan oleh model AI di server.</p>
           <div class="hero-actions">
-            <a class="button" href="#download">Get the Android APK</a>
-            <a class="button button-secondary" href="#how">See how it works</a>
+            <a class="button" href="#download">Unduh APK Android</a>
+            <a class="button button-secondary" href="#how">Lihat cara kerjanya</a>
           </div>
-          <ul class="app-facts" aria-label="App details">
+          <ul class="app-facts" aria-label="Detail aplikasi">
             <li>Android 7.0+ (API 24)</li>
-            <li>Free</li>
-            <li>No account required</li>
+            <li>Gratis</li>
+            <li>Tanpa akun</li>
           </ul>
         </div>
         <figure class="app-figure">
-          <div class="preview-device" role="img" aria-label="Batik VTON Android app preview displayed inside an iPhone mockup">
+          <div class="preview-device" role="img" aria-label="Pratinjau aplikasi Android Batik VTON di dalam bingkai iPhone">
             <span class="preview-hardware-button silent" aria-hidden="true"></span>
             <span class="preview-hardware-button volume-up" aria-hidden="true"></span>
             <span class="preview-hardware-button volume-down" aria-hidden="true"></span>
             <span class="preview-hardware-button power" aria-hidden="true"></span>
             <div class="preview-device-screen">
-              <img src="assets/app-preview.png" width="1280" height="2856" alt="" fetchpriority="high" decoding="async">
+              <img src="/assets/app-preview.png" width="1280" height="2856" alt="Pratinjau aplikasi Batik VTON di Android untuk coba batik virtual" fetchpriority="high" decoding="async">
               <div class="preview-status-bar" aria-hidden="true">
                 <span>9:41</span>
                 <span class="preview-status-icons">
@@ -470,7 +547,7 @@
               <div class="preview-home-indicator" aria-hidden="true"></div>
             </div>
           </div>
-          <figcaption>Android app preview shown inside an iPhone frame</figcaption>
+          <figcaption>Pratinjau aplikasi Android di dalam bingkai iPhone</figcaption>
         </figure>
       </div>
     </section>
@@ -478,30 +555,30 @@
     <section class="section section-surface" id="how" aria-labelledby="how-title">
       <div class="wrap">
         <div class="section-heading">
-          <p class="eyebrow">How it works / 01</p>
-          <h2 class="display" id="how-title">From a batik archive to a personal preview.</h2>
-          <p>Choose a piece, take a portrait in the app, then see the selected batik visualized on your photo.</p>
+          <p class="eyebrow">Cara kerja / 01</p>
+          <h2 class="display" id="how-title">Dari arsip batik ke pratinjau pribadi.</h2>
+          <p>Pilih kain, ambil potret di aplikasi, lalu lihat batik pilihan tergambar pada fotomu.</p>
         </div>
         <ol class="steps">
           <li class="step">
             <span class="step-number">01</span>
-            <h3>Explore the archive</h3>
-            <p>Browse batik traditions from Cirebon, Yogyakarta, Central Java, Solo and more.</p>
+            <h3>Jelajahi arsip</h3>
+            <p>Telusuri tradisi batik dari Cirebon, Yogyakarta, Jawa Tengah, Solo, dan lainnya.</p>
           </li>
           <li class="step">
             <span class="step-number">02</span>
-            <h3>Choose a garment</h3>
-            <p>Select a long-sleeve shirt, formal suit, linen set or jarit.</p>
+            <h3>Pilih pakaian</h3>
+            <p>Pilih kemeja lengan panjang, setelan formal, set linen, atau jarit.</p>
           </li>
           <li class="step">
             <span class="step-number">03</span>
-            <h3>Take a portrait</h3>
-            <p>Capture a photo in the app. It corrects orientation, resizes and compresses the image before upload.</p>
+            <h3>Ambil potret</h3>
+            <p>Ambil foto di aplikasi. Orientasi diperbaiki, ukuran disesuaikan, dan gambar dikompresi sebelum diunggah.</p>
           </li>
           <li class="step">
             <span class="step-number">04</span>
-            <h3>View the try-on</h3>
-            <p>A server-side model visualizes the selected batik on your portrait and returns a preview.</p>
+            <h3>Lihat hasil try-on</h3>
+            <p>Model di server memvisualisasikan batik pilihan pada potretmu, lalu mengirimkan pratinjau.</p>
           </li>
         </ol>
       </div>
@@ -510,23 +587,23 @@
     <section class="section" id="archive" aria-labelledby="archive-title">
       <div class="wrap archive-layout">
         <div class="section-heading">
-          <p class="eyebrow">The archive / 02</p>
-          <h2 class="display" id="archive-title">Each piece carries a place and a story.</h2>
-          <p>The curated archive pairs batik garments with their regional origins, stories and meanings.</p>
+          <p class="eyebrow">Arsip batik / 02</p>
+          <h2 class="display" id="archive-title">Setiap kain membawa tempat dan cerita.</h2>
+          <p>Arsip pilihan ini menyandingkan kain batik dengan asal daerah, kisah, dan maknanya.</p>
           <p class="motif-list">Mega Mendung · Sawunggaling · Tugu Kembang Kreasi · Burung Hong</p>
         </div>
         <div class="archive-details">
           <div class="detail-row">
-            <h3>Regions</h3>
-            <p>Cirebon, Yogyakarta, Central Java, Solo and other batik traditions.</p>
+            <h3>Daerah</h3>
+            <p>Cirebon, Yogyakarta, Jawa Tengah, Solo, dan tradisi batik lainnya.</p>
           </div>
           <div class="detail-row">
-            <h3>Garments</h3>
-            <p>Long-sleeve shirts, formal suits, linen sets and jarit.</p>
+            <h3>Pakaian</h3>
+            <p>Kemeja lengan panjang, setelan formal, set linen, dan jarit.</p>
           </div>
           <div class="detail-row">
-            <h3>Virtual fitting</h3>
-            <p>The app uses FASHN VTON 1.5 on a server. The project page notes that the try-on model needs GPU memory, so image generation happens off the phone.</p>
+            <h3>Try-on virtual</h3>
+            <p>Aplikasi menggunakan FASHN VTON 1.5 di server. Halaman proyek mencatat bahwa model try-on membutuhkan memori GPU, sehingga pembuatan gambar dilakukan di luar ponsel.</p>
           </div>
         </div>
       </div>
@@ -535,13 +612,13 @@
     <section class="section section-soft" id="boutique" aria-labelledby="boutique-title">
       <div class="wrap merchant-layout">
         <div class="section-heading">
-          <p class="eyebrow">Curated boutique / 03</p>
-          <h2 class="display" id="boutique-title">Selected from Engrasia.</h2>
-          <p>The project page describes this archive as curated from Engrasia, an Indonesian batik tulis boutique. It features hand-drawn cloth from Cirebon, Pekalongan, Lasem and Yogyakarta, selected from the original collection.</p>
+          <p class="eyebrow">Butik pilihan / 03</p>
+          <h2 class="display" id="boutique-title">Dipilih dari Engrasia.</h2>
+          <p>Halaman proyek menggambarkan arsip ini sebagai hasil kurasi dari Engrasia, butik batik tulis Indonesia, dengan kain tulis tangan dari Cirebon, Pekalongan, Lasem, dan Yogyakarta yang dipilih dari koleksi aslinya.</p>
         </div>
         <div class="merchant-note">
-          <p>See the original batik tulis collection at Engrasia.</p>
-          <a href="https://engrasia.com/collections/kain-batik-tulis" target="_blank" rel="noopener noreferrer">Visit Engrasia’s collection</a>
+          <p>Lihat koleksi batik tulis aslinya di Engrasia.</p>
+          <a href="https://engrasia.com/collections/kain-batik-tulis" target="_blank" rel="noopener noreferrer">Kunjungi koleksi Engrasia</a>
         </div>
       </div>
     </section>
@@ -549,26 +626,26 @@
     <section class="section section-surface" id="privacy" aria-labelledby="privacy-title">
       <div class="wrap">
         <div class="section-heading">
-          <p class="eyebrow">Photo handling / 04</p>
-          <h2 class="display" id="privacy-title">A portrait is used for the preview.</h2>
-          <p>These details follow the app project page’s description of its photo handling.</p>
+          <p class="eyebrow">Penanganan foto / 04</p>
+          <h2 class="display" id="privacy-title">Potret digunakan untuk pratinjau.</h2>
+          <p>Detail ini mengikuti deskripsi penanganan foto pada halaman proyek aplikasi.</p>
         </div>
         <div class="privacy-grid">
           <article class="privacy-item">
-            <h3>No account or tracking</h3>
-            <p>The app page says no registration, login, analytics SDK or advertising identifier is used.</p>
+            <h3>Tanpa akun dan pelacakan</h3>
+            <p>Halaman aplikasi menyatakan tidak ada registrasi, login, SDK analitik, atau pengenal iklan yang digunakan.</p>
           </article>
           <article class="privacy-item">
-            <h3>Temporary uploads</h3>
-            <p>Portraits are uploaded to generate a try-on result; temporary files are deleted after each request.</p>
+            <h3>Unggahan sementara</h3>
+            <p>Potret diunggah untuk menghasilkan hasil try-on; berkas sementara dihapus setelah setiap permintaan.</p>
           </article>
           <article class="privacy-item">
-            <h3>No saved history</h3>
-            <p>The project page says results are not saved, history is not retained and no profile is created.</p>
+            <h3>Tanpa riwayat tersimpan</h3>
+            <p>Halaman proyek menyatakan hasil tidak disimpan, riwayat tidak dipertahankan, dan tidak ada profil yang dibuat.</p>
           </article>
           <article class="privacy-item">
-            <h3>Processed, not archived</h3>
-            <p>Images are sent to the try-on model to produce a result, then discarded, according to the app page.</p>
+            <h3>Diproses, tidak diarsipkan</h3>
+            <p>Menurut halaman aplikasi, gambar dikirim ke model try-on untuk menghasilkan keluaran, lalu dibuang.</p>
           </article>
         </div>
       </div>
@@ -577,12 +654,12 @@
     <section class="download" id="download" aria-labelledby="download-title">
       <div class="wrap download-inner">
         <div>
-          <p class="eyebrow">Android app</p>
-          <h2 class="display" id="download-title">Get Batik VTON.</h2>
-          <p>Download the Android APK from the project’s GitHub Releases. Compatible with Android 7.0 (API 24) and later.</p>
-          <p class="download-meta">Free · No account required</p>
+          <p class="eyebrow">Aplikasi Android</p>
+          <h2 class="display" id="download-title">Dapatkan Batik VTON.</h2>
+          <p>Unduh APK Android dari GitHub Releases proyek ini. Kompatibel dengan Android 7.0 (API 24) dan yang lebih baru.</p>
+          <p class="download-meta">Gratis · Tanpa akun</p>
         </div>
-        <a class="button" href="https://github.com/DaniZakaria63/batik-vton-mobile/releases" target="_blank" rel="noopener noreferrer">Download Android APK</a>
+        <a class="button" href="https://github.com/DaniZakaria63/batik-vton-mobile/releases" target="_blank" rel="noopener noreferrer">Unduh APK Android</a>
       </div>
     </section>
   </main>
@@ -590,7 +667,7 @@
   <footer class="site-footer">
     <div class="wrap footer-inner">
       <span class="footer-brand">CoBatik</span>
-      <p>Batik VTON · Android virtual try-on</p>
+      <p>Batik VTON · Try-on batik di Android</p>
       <a href="https://github.com/DaniZakaria63/batik-vton-mobile/releases" target="_blank" rel="noopener noreferrer">GitHub Releases</a>
     </div>
   </footer>
@@ -602,7 +679,7 @@
     menuButton.addEventListener("click", () => {
       const isOpen = menuButton.getAttribute("aria-expanded") !== "true";
       menuButton.setAttribute("aria-expanded", String(isOpen));
-      menuButton.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+      menuButton.setAttribute("aria-label", isOpen ? "Tutup navigasi" : "Buka navigasi");
       siteNav.classList.toggle("is-open", isOpen);
     });
 
@@ -610,7 +687,7 @@
       link.addEventListener("click", () => {
         siteNav.classList.remove("is-open");
         menuButton.setAttribute("aria-expanded", "false");
-        menuButton.setAttribute("aria-label", "Open navigation");
+        menuButton.setAttribute("aria-label", "Buka navigasi");
       });
     });
   </script>
