@@ -4,7 +4,8 @@ name: CI/CD
 # every push to master.
 #
 # How deployment works:
-#   rsync the site (index.html + assets/) to the server as the `deploy`
+#   rsync the site (index.html, en/index.html, robots.txt, sitemap.xml,
+#   assets/) to the server as the `deploy`
 #   user over key-only SSH (direct IPv4 connection; no Cloudflare tunnel
 #   involved in the deploy step).
 #
@@ -45,7 +46,7 @@ jobs:
           node-version: '24'
 
       - name: Validate HTML
-        run: npx --yes html-validate@11.16.2 index.html
+        run: npx --yes html-validate@11.16.2 index.html en/index.html
 
   deploy:
     name: Deploy
@@ -65,8 +66,11 @@ jobs:
       - name: Stage static site
         run: |
           test -s index.html
-          mkdir -p _site
+          test -s en/index.html
+          mkdir -p _site/en
           cp index.html _site/index.html
+          cp en/index.html _site/en/index.html
+          cp robots.txt sitemap.xml _site/
           cp -r assets _site/assets
           echo "Staged $(find _site -type f | wc -l) files"
 
@@ -95,14 +99,15 @@ jobs:
         run: |
           ok=0
           for i in $(seq 1 6); do
-            if curl -fsS --max-time 15 "https://cobatik.dream-team.works/" | grep -q "CoBatik"; then
+            if curl -fsS --max-time 15 "https://cobatik.dream-team.works/" | grep -q "CoBatik" \
+              && curl -fsS --max-time 15 "https://cobatik.dream-team.works/en/" | grep -q "CoBatik"; then
               ok=1
               break
             fi
             sleep 5
           done
           if [ "$ok" != "1" ]; then
-            echo "::error::Smoke test failed - the live page did not return the expected content"
+            echo "::error::Smoke test failed - the live pages did not return the expected content"
             exit 1
           fi
-          echo "Live page verified."
+          echo "Live pages verified."

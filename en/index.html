@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f4f1">
+  <title>CoBatik — Virtual Batik Try-On for Android</title>
+  <meta name="description" content="CoBatik presents Batik VTON, a free Android app for virtual batik try-on. Explore a curated Indonesian batik archive and preview a batik look on your portrait.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://cobatik.dream-team.works/en/">
+  <link rel="alternate" hreflang="id" href="https://cobatik.dream-team.works/">
+  <link rel="alternate" hreflang="en" href="https://cobatik.dream-team.works/en/">
+  <link rel="alternate" hreflang="x-default" href="https://cobatik.dream-team.works/">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CoBatik">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="id_ID">
+  <meta property="og:url" content="https://cobatik.dream-team.works/en/">
+  <meta property="og:title" content="CoBatik — Virtual Batik Try-On for Android">
+  <meta property="og:description" content="CoBatik presents Batik VTON, a free Android app for virtual batik try-on. Explore a curated Indonesian batik archive and preview a batik look on your portrait.">
+  <meta property="og:image" content="https://cobatik.dream-team.works/assets/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="CoBatik — virtual batik try-on for Android">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CoBatik — Virtual Batik Try-On for Android">
+  <meta name="twitter:description" content="CoBatik presents Batik VTON, a free Android app for virtual batik try-on. Explore a curated Indonesian batik archive and preview a batik look on your portrait.">
+  <meta name="twitter:image" content="https://cobatik.dream-team.works/assets/og-cover.png">
+  <meta name="twitter:image:alt" content="CoBatik — virtual batik try-on for Android">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://cobatik.dream-team.works/#website",
+        "url": "https://cobatik.dream-team.works/",
+        "name": "CoBatik",
+        "description": "CoBatik presents Batik VTON, an Android app for virtual batik try-on.",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "MobileApplication",
+        "@id": "https://cobatik.dream-team.works/#app",
+        "name": "Batik VTON",
+        "alternateName": "CoBatik",
+        "description": "Free Android app for virtual batik try-on: explore a curated Indonesian batik archive, take a portrait and preview your look.",
+        "operatingSystem": "Android 7.0+",
+        "applicationCategory": "ShoppingApplication",
+        "inLanguage": ["id", "en"],
+        "downloadUrl": "https://github.com/DaniZakaria63/batik-vton-mobile/releases",
+        "installUrl": "https://github.com/DaniZakaria63/batik-vton-mobile/releases",
+        "sameAs": ["https://github.com/DaniZakaria63/batik-vton-mobile"],
+        "screenshot": "https://cobatik.dream-team.works/assets/app-preview.png",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "IDR" }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f4f4f1;
+      --surface: #ffffff;
+      --soft: #ecece8;
+      --ink: #20201e;
+      --muted: #555550;
+      --line: #d4d3cd;
+      --brown: #684323;
+      --brown-dark: #4c2d16;
+      --gold: #8a713e;
+      --night: #211f1c;
+      --night-muted: #d0cec8;
+      --content: 1200px;
+      --gutter: clamp(20px, 4vw, 48px);
+      --space-section: clamp(56px, 8vw, 96px);
+      --ease: 180ms ease-out;
+      --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+      --device-frame-mid: #1d1d20;
+      --device-screen: #f7f7f8;
+      --device-system: #111214;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font: 16px/1.65 var(--sans);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; }
+    button { color: inherit; font: inherit; }
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 4px;
+    }
+    ::selection { color: #fff; background: var(--brown); }
+    .wrap { width: min(100% - (var(--gutter) * 2), var(--content)); margin-inline: auto; }
+    .display { font-family: var(--display); font-weight: 500; letter-spacing: -.045em; }
+    .eyebrow {
+      margin: 0;
+      color: var(--brown);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+    .skip-link {
+      position: fixed;
+      z-index: 100;
+      top: 8px;
+      left: 8px;
+      padding: 12px 16px;
+      transform: translateY(-150%);
+      color: #fff;
+      background: var(--ink);
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    .site-header {
+      position: sticky;
+      z-index: 20;
+      top: 0;
+      border-bottom: 1px solid var(--line);
+      background: var(--paper);
+    }
+    .header-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 10px;
+      color: var(--ink);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .brand-name { font-size: 23px; font-weight: 720; letter-spacing: -.075em; }
+    .brand-note { color: var(--muted); font-size: 11px; letter-spacing: .045em; }
+    .header-right { display: flex; align-items: center; gap: clamp(18px, 2.5vw, 34px); }
+    .header-actions { display: flex; align-items: center; gap: 16px; }
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 650;
+      letter-spacing: .02em;
+    }
+    .lang-switch a { color: var(--muted); text-decoration: none; transition: color var(--ease); }
+    .lang-switch a:hover { color: var(--brown-dark); }
+    .lang-switch a[aria-current="page"] { color: var(--ink); }
+    .lang-switch .lang-sep { color: var(--line); }
+    .site-nav { display: flex; align-items: center; gap: clamp(18px, 2.5vw, 34px); }
+    .site-nav a {
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+      transition: color var(--ease);
+    }
+    .site-nav a:hover { color: var(--brown-dark); }
+    .site-nav a.nav-download { color: var(--brown); font-weight: 700; }
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      background: transparent;
+      cursor: pointer;
+    }
+    .menu-glyph { display: grid; gap: 5px; }
+    .menu-glyph span { display: block; width: 20px; height: 2px; background: currentColor; }
+
+    .hero { padding-block: clamp(48px, 7vw, 88px) var(--space-section); }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, .72fr);
+      align-items: center;
+      gap: clamp(48px, 8vw, 112px);
+    }
+    .hero-copy { max-width: 650px; }
+    .hero h1 {
+      max-width: 13ch;
+      margin: 18px 0 22px;
+      font-size: clamp(44px, 6.4vw, 78px);
+      line-height: 1.01;
+    }
+    .hero-lead {
+      max-width: 58ch;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(17px, 1.5vw, 19px);
+      line-height: 1.65;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      border: 1px solid var(--brown);
+      border-radius: 2px;
+      color: #fff;
+      background: var(--brown);
+      font-size: 14px;
+      font-weight: 680;
+      line-height: 1.3;
+      text-align: center;
+      text-decoration: none;
+      transition: color var(--ease), background var(--ease), border-color var(--ease);
+    }
+    .button:hover { border-color: var(--brown-dark); background: var(--brown-dark); }
+    .button-secondary { color: var(--ink); background: transparent; border-color: #8e8b83; }
+    .button-secondary:hover { color: #fff; border-color: var(--ink); background: var(--ink); }
+    .app-facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      margin: 24px 0 0;
+      padding: 16px 0 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+      list-style: none;
+    }
+    .app-facts li { white-space: nowrap; }
+    .app-figure { width: min(100%, 344px); justify-self: center; margin: 0; }
+    .preview-device {
+      position: relative;
+      isolation: isolate;
+      width: min(100%, 344px);
+      aspect-ratio: 344 / 738;
+      margin-inline: auto;
+      border-radius: clamp(38px, 13.5vw, 50px);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.18), transparent 17%),
+        linear-gradient(160deg, #3a3a3d 0%, var(--device-frame-mid) 47%, #09090b 100%);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.13),
+        inset 0 0 0 2px rgba(0,0,0,.9),
+        0 24px 48px -18px rgba(0,0,0,.42),
+        0 8px 20px -10px rgba(0,0,0,.28);
+    }
+    .preview-device::before,
+    .preview-device::after {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      top: 12%;
+      bottom: 12%;
+      width: 3px;
+      border-radius: 3px;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,.13) 12%, transparent 22%, transparent 78%, rgba(255,255,255,.08) 90%, transparent);
+      pointer-events: none;
+    }
+    .preview-device::before { left: -1px; }
+    .preview-device::after { right: -1px; }
+    .preview-hardware-button {
+      position: absolute;
+      z-index: 3;
+      width: 4px;
+      border-radius: 3px;
+      background: linear-gradient(90deg, #050506, #242428 58%, #08080a);
+      box-shadow: inset 0 1px rgba(255,255,255,.08);
+    }
+    .preview-hardware-button.silent { left: -3px; top: 20%; height: 4%; }
+    .preview-hardware-button.volume-up { left: -3px; top: 26%; height: 7.1%; }
+    .preview-hardware-button.volume-down { left: -3px; top: 34%; height: 7.1%; }
+    .preview-hardware-button.power { right: -3px; top: 29%; height: 12%; }
+    .preview-device-screen {
+      position: absolute;
+      inset: 1.626% 3.488%;
+      overflow: hidden;
+      border-radius: clamp(30px, 11vw, 40px);
+      background: var(--device-screen);
+    }
+    .preview-device-screen img { display: block; width: 100%; max-width: none; height: auto; }
+    .preview-status-bar {
+      position: absolute;
+      z-index: 4;
+      top: 0;
+      left: 7%;
+      right: 7%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding-top: 2.5%;
+      color: var(--device-system);
+      font-size: 12px;
+      font-weight: 650;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .preview-status-icons { display: inline-flex; align-items: center; gap: 4px; }
+    .preview-status-icons svg { display: block; width: 14px; height: 10px; fill: currentColor; }
+    .preview-status-icons .battery { width: 20px; }
+    .preview-dynamic-island {
+      position: absolute;
+      z-index: 5;
+      top: 1.2%;
+      left: 50%;
+      width: 32%;
+      height: 4.2%;
+      transform: translateX(-50%);
+      border-radius: 999px;
+      background: #000;
+      box-shadow: inset 0 -1px 1px rgba(255,255,255,.05);
+      pointer-events: none;
+    }
+    .preview-home-indicator {
+      position: absolute;
+      z-index: 5;
+      left: 50%;
+      bottom: 1.1%;
+      width: 34%;
+      height: 5px;
+      transform: translateX(-50%);
+      border-radius: 999px;
+      background: var(--device-system);
+      opacity: .9;
+      pointer-events: none;
+    }
+    .app-figure figcaption { margin-top: 12px; color: var(--muted); font-size: 12px; letter-spacing: .025em; }
+
+    .section { padding-block: var(--space-section); border-top: 1px solid var(--line); }
+    .section-surface { background: var(--surface); }
+    .section-soft { background: var(--soft); }
+    .section-heading { max-width: 720px; margin-bottom: 36px; }
+    .section-heading h2 {
+      margin: 12px 0 0;
+      font-size: clamp(32px, 4.5vw, 52px);
+      line-height: 1.08;
+    }
+    .section-heading > p:last-child { max-width: 64ch; margin: 16px 0 0; color: var(--muted); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .step { min-width: 0; padding-top: 18px; border-top: 1px solid var(--gold); }
+    .step-number { display: block; color: var(--brown); font: 500 18px/1 var(--display); }
+    .step h3 { margin: 18px 0 8px; font-size: 18px; line-height: 1.3; }
+    .step p { margin: 0; color: var(--muted); font-size: 15px; }
+
+    .archive-layout {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      gap: clamp(36px, 7vw, 96px);
+      align-items: start;
+    }
+    .archive-layout .section-heading { margin: 0; }
+    .archive-details { display: grid; gap: 26px; }
+    .detail-row {
+      display: grid;
+      grid-template-columns: minmax(120px, .55fr) minmax(0, 1fr);
+      gap: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+    .detail-row h3 { margin: 0; font-size: 15px; }
+    .detail-row p { margin: 0; color: var(--muted); }
+    .motif-list { margin-top: 24px; color: var(--brown-dark); font-size: 14px; font-weight: 650; }
+
+    .process-band {
+      display: grid;
+      grid-template-columns: minmax(180px, .55fr) minmax(0, 1.45fr);
+      gap: clamp(24px, 6vw, 80px);
+      align-items: start;
+      padding-block: 32px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .process-band h2 { margin: 0; font-size: clamp(24px, 3vw, 34px); line-height: 1.15; }
+    .process-band p { max-width: 66ch; margin: 0; color: var(--muted); }
+    .process-band strong { color: var(--ink); }
+
+    .merchant-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, .62fr);
+      gap: clamp(40px, 8vw, 110px);
+      align-items: center;
+    }
+    .merchant-layout .section-heading { margin: 0; }
+    .merchant-note {
+      padding: 20px 0 20px 24px;
+      border-left: 2px solid var(--gold);
+    }
+    .merchant-note p { margin: 0; color: var(--muted); }
+    .merchant-note a { display: inline-block; margin-top: 18px; color: var(--brown); font-weight: 700; text-underline-offset: 4px; }
+
+    .privacy-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0 36px;
+      margin: 0;
+    }
+    .privacy-item { padding: 20px 0; border-top: 1px solid var(--line); }
+    .privacy-item h3 { margin: 0 0 6px; font-size: 17px; }
+    .privacy-item p { margin: 0; color: var(--muted); }
+
+    .download {
+      padding-block: clamp(64px, 9vw, 112px);
+      color: #f8f7f4;
+      background: var(--night);
+    }
+    .download-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 40px; }
+    .download .eyebrow { color: #d2bd8a; }
+    .download h2 { max-width: 14ch; margin: 14px 0 12px; font-size: clamp(36px, 5vw, 58px); line-height: 1.04; }
+    .download p { max-width: 60ch; margin: 0; color: var(--night-muted); }
+    .download .button { min-width: 190px; color: var(--night); border-color: #d8c18c; background: #d8c18c; }
+    .download .button:hover { color: var(--night); border-color: #efe1bf; background: #efe1bf; }
+    .download-meta { margin-top: 18px !important; font-size: 13px; }
+
+    .site-footer { padding-block: 24px; background: var(--night); border-top: 1px solid #4b4842; color: var(--night-muted); }
+    .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; }
+    .footer-brand { color: #fff; font-size: 15px; font-weight: 700; letter-spacing: -.035em; }
+    .footer-inner p { margin: 0; font-size: 12px; }
+    .footer-inner a { color: #e3d4b1; font-size: 13px; text-underline-offset: 3px; }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(230px, .68fr); gap: 40px; }
+      .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 32px; }
+    }
+    @media (max-width: 700px) {
+      .header-inner { min-height: 68px; }
+      .menu-toggle { display: inline-flex; }
+      .site-nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        display: none;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px var(--gutter) 18px;
+        border-bottom: 1px solid var(--line);
+        background: var(--paper);
+      }
+      .site-nav.is-open { display: flex; flex-direction: column; }
+      .site-nav a { min-height: 48px; display: flex; align-items: center; border-top: 1px solid var(--line); }
+      .site-nav a.nav-download { border-top: 0; }
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-copy { max-width: 620px; }
+      .app-figure { width: min(100%, 320px); }
+      .archive-layout, .merchant-layout { grid-template-columns: 1fr; gap: 32px; }
+      .process-band { grid-template-columns: 1fr; gap: 12px; }
+      .download-inner { grid-template-columns: 1fr; align-items: start; gap: 28px; }
+    }
+    @media (max-width: 540px) {
+      .brand-note { display: none; }
+      .hero h1 { max-width: 11ch; font-size: clamp(42px, 12vw, 58px); }
+      .hero-actions { align-items: stretch; flex-direction: column; }
+      .hero-actions .button { width: 100%; }
+      .steps, .privacy-grid { grid-template-columns: 1fr; }
+      .detail-row { grid-template-columns: 1fr; gap: 6px; }
+      .merchant-note { padding-left: 18px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="CoBatik home">
+        <span class="brand-name">CoBatik</span>
+        <span class="brand-note">Batik virtual try-on</span>
+      </a>
+      <div class="header-right">
+        <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+          <a href="#how">How it works</a>
+          <a href="#archive">The archive</a>
+          <a href="#privacy">Privacy</a>
+          <a class="nav-download" href="#download">Android download</a>
+        </nav>
+        <div class="header-actions">
+          <div class="lang-switch" role="group" aria-label="Language">
+            <a href="/" hreflang="id" lang="id">ID</a>
+            <span class="lang-sep" aria-hidden="true">/</span>
+            <a href="/en/" hreflang="en" lang="en" aria-current="page">EN</a>
+          </div>
+          <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
+            <span class="menu-glyph" aria-hidden="true"><span></span><span></span><span></span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Android · Virtual batik try-on</p>
+          <h1 class="display" id="hero-title">Try Indonesian batik on your portrait.</h1>
+          <p class="hero-lead">CoBatik presents Batik VTON, an Android app for exploring a curated batik archive, capturing a portrait and previewing a batik look generated by an AI model on the server.</p>
+          <div class="hero-actions">
+            <a class="button" href="#download">Get the Android APK</a>
+            <a class="button button-secondary" href="#how">See how it works</a>
+          </div>
+          <ul class="app-facts" aria-label="App details">
+            <li>Android 7.0+ (API 24)</li>
+            <li>Free</li>
+            <li>No account required</li>
+          </ul>
+        </div>
+        <figure class="app-figure">
+          <div class="preview-device" role="img" aria-label="Batik VTON Android app preview displayed inside an iPhone mockup">
+            <span class="preview-hardware-button silent" aria-hidden="true"></span>
+            <span class="preview-hardware-button volume-up" aria-hidden="true"></span>
+            <span class="preview-hardware-button volume-down" aria-hidden="true"></span>
+            <span class="preview-hardware-button power" aria-hidden="true"></span>
+            <div class="preview-device-screen">
+              <img src="/assets/app-preview.png" width="1280" height="2856" alt="Batik VTON Android app preview for virtual batik try-on" fetchpriority="high" decoding="async">
+              <div class="preview-status-bar" aria-hidden="true">
+                <span>9:41</span>
+                <span class="preview-status-icons">
+                  <svg viewBox="0 0 18 12"><path d="M1 10.5h2V8H1v2.5Zm4 0h2V5.5H5v5Zm4 0h2V3H9v7.5Zm4 0h2V.5h-2v10Z"/></svg>
+                  <svg viewBox="0 0 18 12"><path d="M9 11.2 7.2 9.4a2.55 2.55 0 0 1 3.6 0L9 11.2Zm4.1-4.1-1.35 1.35a3.9 3.9 0 0 0-5.5 0L4.9 7.1a5.8 5.8 0 0 1 8.2 0Zm3-3-1.35 1.35a8.15 8.15 0 0 0-11.5 0L1.9 4.1a10.05 10.05 0 0 1 14.2 0Z"/></svg>
+                  <svg class="battery" viewBox="0 0 27 12"><path fill-rule="evenodd" d="M2.5 1h19A2.5 2.5 0 0 1 24 3.5v5a2.5 2.5 0 0 1-2.5 2.5h-19A2.5 2.5 0 0 1 0 8.5v-5A2.5 2.5 0 0 1 2.5 1Zm0 1A1.5 1.5 0 0 0 1 3.5v5A1.5 1.5 0 0 0 2.5 10h19A1.5 1.5 0 0 0 23 8.5v-5A1.5 1.5 0 0 0 21.5 2h-19Zm.5 1h17.5A1.5 1.5 0 0 1 22 4.5v3A1.5 1.5 0 0 1 20.5 9H3V3Zm22 1.5a1.5 1.5 0 0 1 0 3v-3Z"/></svg>
+                </span>
+              </div>
+              <div class="preview-dynamic-island" aria-hidden="true"></div>
+              <div class="preview-home-indicator" aria-hidden="true"></div>
+            </div>
+          </div>
+          <figcaption>Android app preview shown inside an iPhone frame</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section section-surface" id="how" aria-labelledby="how-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="eyebrow">How it works / 01</p>
+          <h2 class="display" id="how-title">From a batik archive to a personal preview.</h2>
+          <p>Choose a piece, take a portrait in the app, then see the selected batik visualized on your photo.</p>
+        </div>
+        <ol class="steps">
+          <li class="step">
+            <span class="step-number">01</span>
+            <h3>Explore the archive</h3>
+            <p>Browse batik traditions from Cirebon, Yogyakarta, Central Java, Solo and more.</p>
+          </li>
+          <li class="step">
+            <span class="step-number">02</span>
+            <h3>Choose a garment</h3>
+            <p>Select a long-sleeve shirt, formal suit, linen set or jarit.</p>
+          </li>
+          <li class="step">
+            <span class="step-number">03</span>
+            <h3>Take a portrait</h3>
+            <p>Capture a photo in the app. It corrects orientation, resizes and compresses the image before upload.</p>
+          </li>
+          <li class="step">
+            <span class="step-number">04</span>
+            <h3>View the try-on</h3>
+            <p>A server-side model visualizes the selected batik on your portrait and returns a preview.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="archive" aria-labelledby="archive-title">
+      <div class="wrap archive-layout">
+        <div class="section-heading">
+          <p class="eyebrow">The archive / 02</p>
+          <h2 class="display" id="archive-title">Each piece carries a place and a story.</h2>
+          <p>The curated archive pairs batik garments with their regional origins, stories and meanings.</p>
+          <p class="motif-list">Mega Mendung · Sawunggaling · Tugu Kembang Kreasi · Burung Hong</p>
+        </div>
+        <div class="archive-details">
+          <div class="detail-row">
+            <h3>Regions</h3>
+            <p>Cirebon, Yogyakarta, Central Java, Solo and other batik traditions.</p>
+          </div>
+          <div class="detail-row">
+            <h3>Garments</h3>
+            <p>Long-sleeve shirts, formal suits, linen sets and jarit.</p>
+          </div>
+          <div class="detail-row">
+            <h3>Virtual fitting</h3>
+            <p>The app uses FASHN VTON 1.5 on a server. The project page notes that the try-on model needs GPU memory, so image generation happens off the phone.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="boutique" aria-labelledby="boutique-title">
+      <div class="wrap merchant-layout">
+        <div class="section-heading">
+          <p class="eyebrow">Curated boutique / 03</p>
+          <h2 class="display" id="boutique-title">Selected from Engrasia.</h2>
+          <p>The project page describes this archive as curated from Engrasia, an Indonesian batik tulis boutique. It features hand-drawn cloth from Cirebon, Pekalongan, Lasem and Yogyakarta, selected from the original collection.</p>
+        </div>
+        <div class="merchant-note">
+          <p>See the original batik tulis collection at Engrasia.</p>
+          <a href="https://engrasia.com/collections/kain-batik-tulis" target="_blank" rel="noopener noreferrer">Visit Engrasia’s collection</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-surface" id="privacy" aria-labelledby="privacy-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="eyebrow">Photo handling / 04</p>
+          <h2 class="display" id="privacy-title">A portrait is used for the preview.</h2>
+          <p>These details follow the app project page’s description of its photo handling.</p>
+        </div>
+        <div class="privacy-grid">
+          <article class="privacy-item">
+            <h3>No account or tracking</h3>
+            <p>The app page says no registration, login, analytics SDK or advertising identifier is used.</p>
+          </article>
+          <article class="privacy-item">
+            <h3>Temporary uploads</h3>
+            <p>Portraits are uploaded to generate a try-on result; temporary files are deleted after each request.</p>
+          </article>
+          <article class="privacy-item">
+            <h3>No saved history</h3>
+            <p>The project page says results are not saved, history is not retained and no profile is created.</p>
+          </article>
+          <article class="privacy-item">
+            <h3>Processed, not archived</h3>
+            <p>Images are sent to the try-on model to produce a result, then discarded, according to the app page.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="download" id="download" aria-labelledby="download-title">
+      <div class="wrap download-inner">
+        <div>
+          <p class="eyebrow">Android app</p>
+          <h2 class="display" id="download-title">Get Batik VTON.</h2>
+          <p>Download the Android APK from the project’s GitHub Releases. Compatible with Android 7.0 (API 24) and later.</p>
+          <p class="download-meta">Free · No account required</p>
+        </div>
+        <a class="button" href="https://github.com/DaniZakaria63/batik-vton-mobile/releases" target="_blank" rel="noopener noreferrer">Download Android APK</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span class="footer-brand">CoBatik</span>
+      <p>Batik VTON · Android virtual try-on</p>
+      <a href="https://github.com/DaniZakaria63/batik-vton-mobile/releases" target="_blank" rel="noopener noreferrer">GitHub Releases</a>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector(".menu-toggle");
+    const siteNav = document.querySelector(".site-nav");
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = menuButton.getAttribute("aria-expanded") !== "true";
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+      siteNav.classList.toggle("is-open", isOpen);
+    });
+
+    siteNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        siteNav.classList.remove("is-open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open navigation");
+      });
+    });
+  </script>
+</body>
+</html>

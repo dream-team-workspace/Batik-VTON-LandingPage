@@ -1,0 +1,5 @@
+# https://cobatik.dream-team.works
+User-agent: *
+Allow: /
+
+Sitemap: https://cobatik.dream-team.works/sitemap.xml
